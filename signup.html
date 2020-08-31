@@ -48,37 +48,50 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sign Up page</title>
 	</head>
-	<body>
-	  <div style="text-align:center">
-		<h2>Welcome to Movie booking</h2><hr/>
-		<marquee><span>New Releases This Month <a href="Tenet.html">-TENET</a> -Mirzapur S2 -Black Widow -Money Heist S5 </span></marquee>
-		
+	<body style="font-family:Open Sans,sans-serif;color:white;height=100%;margin=0;background-image: url('account-bg.jpg');background-repeat:no-repeat;"  alink="#D3D3D3" vlink="#ffcccb" link="#D3D3D3">
+	  <div style="text-align:center;background-image: -webkit-linear-gradient(169deg, #5560ff 17%, #aa52a1 63%, #ff4343 100%);">
+	  <table width="100%">
+	  <tr>
+		<th>
+		<h2 style="color:white">Welcome to Movie booking</h2></th>
+	  </tr>
+	  </table>
+		<hr />
 		
 	  </div>
+	  <marquee><span>New Releases This Month <a href="Tenet.html">-TENET</a> -Mirzapur S2 -Black Widow -Money Heist S5 </span></marquee>
 	  <div style="position:absolute;top:15%;left:35%">
 		<form>
 		<fieldset>
+		<!--<legend style="font-size:35px">Sign Up</legend>-->
 		  <div>
 			  <center><span style="font-size: 35px;">Sign up</span></center>
 			<table>
 			  <tr>
 				<td>Email:<span style="color:red">*</span></td>
 				<td>
-				  <input type="text" name="email" required>
+				  <input type="text" name="email" placeholder="Enter your Email-ID"required>
+				</td>
+				<br>
+			  </tr>
+			  <tr>
+				<td>Username:<span style="color:red">*</span></td>
+				<td>
+				  <input type="text" placeholder="Enter the username" name="uname" required>
 				</td>
 				<br>
 			  </tr>
 			  <tr>
 				<td>Password:<span style="color:red">*</span></td>
 				<td>
-				  <input type="password" name="pwd" required>
+				  <input type="password" name="pwd" placeholder="Enter your password"required>
 				</td>
 				<br>
 			  </tr>
 			  <tr>
 				<td>Confirm Password:<span style="color:red">*</span></td>
 				<td>
-				  <input type="password" name="cpwd" required>
+				  <input type="password" name="cpwd" placeholder="Re-enter your password"required>
 				  <br>
 			  </tr>
 			  <tr>
@@ -88,7 +101,7 @@
 						<label for="TnC">I agree to the
 					</th>
 					<td>
-						 <iframe src="TnC.html" height="200" width="300" style="border:2px solid black;" title="Iframe Example"></iframe><br></td>
+						 <iframe src="TnC.html" height="200" width="300" style="border:2px solid white;" title="Iframe Example"></iframe><br></td>
 			  </tr>
 			  <tr>
 				<td>
@@ -100,9 +113,9 @@
 		  </fieldset>
 		</form>
 	  </div>
-	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	  <div style="text-align:center">
-		Already have an account?&nbsp;&nbsp;<a href="link">Login</a>
+		Already have an account?&nbsp;&nbsp;<a href="signin.html">Login</a>
 	  </div>
 	</body>
 </html>
