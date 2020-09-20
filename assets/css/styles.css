@@ -1,0 +1,38 @@
+input[type="date"]:before {
+  content: attr(placeholder) !important;
+  color:rgb(133, 146, 158);
+  margin-right: 0.5em;
+}
+input[type="date"]:focus:before,
+input[type="date"]:valid:before {
+  content: "";
+}
+#promo .jumbotron {
+  border-radius: 20px;
+  padding: 40px;
+  background-color: rgb(255,255,255,0.75);
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+@media (min-width: 768px) {
+  #promo .jumbotron {
+    padding: 20px;
+  }
+}
+
+@media (min-width: 768px) {
+  #promo {
+    padding: 20px;
+  }
+}
+
+#poster {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+}
+
+
+
