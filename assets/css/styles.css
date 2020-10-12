@@ -53,5 +53,11 @@ input[type="date"]:valid:before {
   outline: none;
   cursor: pointer;
 }
+.typewrite{
+  text-align: center;
+  color:rgb(17, 16, 16);
+  font-size: 20px;
+  padding-top:5em;
+}
 
 
