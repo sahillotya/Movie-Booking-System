@@ -16,6 +16,10 @@
 </head>
 
 <body style="filter: blur(0px) brightness(101%);opacity: 1;">
+    <!-- Button to scroll Top -->
+    <button id="btnScrollToTop">
+        <i class="fa fa-chevron-up"></i>
+    </button>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(220,220,220);position: sticky;z-index: 100;">
         <img src="https://img.icons8.com/nolan/64/starred-ticket.png"/>&nbsp;&nbsp;<a class="navbar-brand" href="index.html" style="background: rgba(255,255,255,0);text-align: left;color:#3659FF;"><h3>Movie Booking Seva</h3></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
@@ -210,6 +214,16 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const btnScrollToTop = document.querySelector("#btnScrollToTop");
+        btnScrollToTop.addEventListener("click", function(){
+            window.scrollTo({
+                top:0,
+                left:0,
+                behaviour: "smooth"
+            })
+        })
+    </script>
 </body>
 
 </html>

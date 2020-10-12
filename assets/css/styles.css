@@ -33,6 +33,25 @@ input[type="date"]:valid:before {
   margin-right: auto;
   width: 90%;
 }
+.img-fluid{
+  transition: all 1s;
+}
 
+.img-fluid:hover{
+  transform:scale(1.05);
+}
+
+#btnScrollToTop{
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #0FEAFF;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  outline: none;
+  cursor: pointer;
+}
 
 
