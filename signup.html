@@ -31,17 +31,56 @@
                 </ul>       
     </nav>
     <div class="login-dark">
-        <form method="post" style="width: 463px;">
+        <form action="register" id="reg"method="post" style="width: 463px;">
+            <div class="illustration"><i class="la la-sign-in"></i></div>
+
+            <input type="text" class="form-control" placeholder="First Name" id="fname" name="fname"  > 
+            <input class="form-control" type="text" placeholder="Last Name" id="lname" name="lname">
+            <h6 id="namecheck" style="color: red;"> 
+                **Please Fill your name
+            </h6>
+                <input class="form-control" type="text" placeholder="Username" name="username" id="username">
+                <h6 id="usercheck" style="color: red;" > 
+                    **Username is missing 
+              </h6> 
+
+              
+                <input class="form-control" type="password" placeholder="Password" name="password" id="password"> <span id="pass"></span> 
+                <h6 id="passcheck" style="color: red;"> 
+                    **Please Fill the password 
+                </h6>
+
+                
+                <input class="form-control" type="password" placeholder="Confirm Password" name="conpassword" id="conpassword">   
+                <h6 id="conpasscheck" style="color: red;"> 
+                    **Password didn't match 
+                </h6>
+                
+                
+                <input class="form-control" placeholder="Age" type="text" id="age" name="age" >
+                <h6 id="agecheck" style="color: red;"> 
+                    **Please Fill your age 
+                </h6>
+                
+                <input class="form-control" type="email" placeholder="email-id@gmail.com" name="email" id="email">
+                <button class="btn btn-primary btn-block" type="submit" id="submitbtn" name="submitbtn">Sign up</button>
+                <a class="forgot" href="Login.html" style="color: rgb(65,129,193);">Already have an account? Login</a>
+        <!-- <form id="form" class="form" method="post" style="width: 463px;">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="la la-sign-in"></i></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Username"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Confirm Password"></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="email"></div>
+            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" id="username"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="password"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Confirm Password" id="cpassword"></div>
             <input class="form-control" type="date" placeholder="DOB" required="" style="color: #85929E ;">
-            <div class="form-group"><a class="btn btn-primary btn-block" role="button" href="index.html">Sign Up</a></div><a class="forgot" href="Login.html" style="color: rgb(65,129,193);">Already have an account? Login</a></form>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block">Signup</button>
+                <a class="btn btn-primary btn-block" role="button" href="index.html" id="submit">Sign Up</a>
+            </div>
+            <a class="forgot" href="Login.html" style="color: rgb(65,129,193);">Already have an account? Login</a></form> -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="assets/js/validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 
