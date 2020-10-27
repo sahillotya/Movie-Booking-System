@@ -1,3 +1,20 @@
+<?php
+$message="";
+//var_dump("out IF ");
+$uname = "uname@ves.ac.in";
+$pass = "neeraj1!";
+if(isset($_POST['submit'])) {
+    // Enter the code you want to execute after the form has been submitted
+    // Display Success or Failure message (if any)
+    if($_POST["username"]==$uname && $_POST["password"]==$pass) {
+        $message = "<span style='color: #FEFEFE;'>You are successfully authenticated!</span>";
+        
+    } else {
+        $message = "<span style='color: red;'>Invalid Username or Password!</span>";
+        
+    }
+  }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -16,6 +33,7 @@
 </head>
 
 <body>
+    
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(220,220,220);position: sticky;z-index: 100;">
         <img src="https://img.icons8.com/nolan/64/starred-ticket.png"/>&nbsp;&nbsp;<a class="navbar-brand" href="index.html" style="background: rgba(255,255,255,0);text-align: left;color:#3659FF;"><h3>Movie Booking Seva</h3></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
@@ -28,59 +46,38 @@
                     <li class="nav-item"><div class="dropdown" style="padding-right: 43px;padding-top: 0.8em;padding-left:3em;padding-bottom:5px;float:right"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Select City</a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="#">Mumbai</a><a class="dropdown-item" href="#">Delhi</a><a class="dropdown-item" href="#">Chandigarh</a></div>
                     </div> </li>
+
                 </ul>       
     </nav>
     <div class="login-dark">
-        <form action="Account.php" id="reg"method="post" style="width: 463px;">
-            <div class="illustration"><i class="la la-sign-in"></i></div>
-
-            <input type="text" class="form-control" placeholder="First Name" id="fname" name="fname"  > 
-            <input class="form-control" type="text" placeholder="Last Name" id="lname" name="lname">
-            <h6 id="namecheck" style="color: red;"> 
-                **Please Fill your name
-            </h6>
+        <form method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            
                 <input class="form-control" type="text" placeholder="Username" name="username" id="username">
                 <h6 id="usercheck" style="color: red;" > 
                     **Username is missing 
               </h6> 
 
               
-                <input class="form-control" type="password" placeholder="Password" name="password" id="password"> <span id="pass"></span> 
+                <input class="form-control" type="password" placeholder="Password" name="password" id="password"> 
                 <h6 id="passcheck" style="color: red;"> 
                     **Please Fill the password 
                 </h6>
-
-                
-                <input class="form-control" type="password" placeholder="Confirm Password" name="conpassword" id="conpassword">   
-                <h6 id="conpasscheck" style="color: red;"> 
-                    **Password didn't match 
-                </h6>
-                
-                
-                <input class="form-control" placeholder="Age" type="text" id="age" name="age" >
-                <h6 id="agecheck" style="color: red;"> 
-                    **Please Fill your age 
-                </h6>
-                
-                <input class="form-control" type="email" placeholder="email-id@gmail.com" name="email" id="email">
-                <button class="btn btn-primary btn-block" type="submit" id="submitbtn" name="submitbtn">Sign up</button>
-                <a class="forgot" href="Login.php" style="color: rgb(65,129,193);">Already have an account? Login</a>
-        <!-- <form id="form" class="form" method="post" style="width: 463px;">
-            <h2 class="sr-only">Login Form</h2>
-            <div class="illustration"><i class="la la-sign-in"></i></div>
-            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" id="email"></div>
-            <div class="form-group"><input class="form-control" type="text" name="username" placeholder="Username" id="username"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" id="password"></div>
-            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Confirm Password" id="cpassword"></div>
-            <input class="form-control" type="date" placeholder="DOB" required="" style="color: #85929E ;">
-            <div class="form-group">
-                <button class="btn btn-primary btn-block">Signup</button>
-                <a class="btn btn-primary btn-block" role="button" href="index.html" id="submit">Sign Up</a>
-            </div>
-            <a class="forgot" href="Login.html" style="color: rgb(65,129,193);">Already have an account? Login</a></form> -->
+                <?php
+                    echo $message;
+                    $message="";
+                ?>
+                <button class="btn btn-primary btn-block" type="submit" id="submit" name="submit">Log In</button>
+                <a class="forgot" href="signup.html" style="color: rgb(65,129,193);">Don't have an account? Sign-up</a></form>
+            <!-- <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
+            <div class="form-group"><a class="btn btn-primary btn-block" role="button" href="index.html">Log In</a></div><a class="forgot" href="signup.html" style="color: rgb(65,129,193);">Don't have an account? Sign-up</a></form> -->
     </div>
+    <div></div>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="assets/js/validate.js"></script>
+    <script src="assets/js/login-validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 </body>
 
