@@ -1,11 +1,20 @@
 <?php
+require('dataBase.php');
 $fname = $_POST["fname"];
 $lname = $_POST["lname"];
 $uname = $_POST["username"];
 $pass = $_POST["password"];
 $age = $_POST["age"];
-$email=$_POST["email"];
+$email = $_POST["email"];
+$pass=hash('sha256',$pass);
+$sqlreg = "INSERT INTO user(`fname`, `lname`, `username`, `password`, `age`, `email_id`) VALUES ('$fname','$lname','$uname','$pass','$age','$email')";
+$current_id = mysqli_query($conn, $sqlreg) or die("<b>Error:</b> Problem while submitting<br/>" . mysqli_error($conn));
 
+$mess="";
+$length=strlen($pass);
+for($i=0;$i<$length;$i++){
+    $mess.="&bull;";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,6 +37,7 @@ $email=$_POST["email"];
 </head>
 
 <body>
+    
 <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(220,220,220);position: sticky;z-index: 100;">
         <img src="https://img.icons8.com/nolan/64/starred-ticket.png"/>&nbsp;&nbsp;<a class="navbar-brand" href="index.html" style="background: rgba(255,255,255,0);text-align: left;color:#3659FF;"><h3>Movie Booking Seva</h3></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
@@ -40,7 +50,7 @@ $email=$_POST["email"];
                     <li class="nav-item"><div class="dropdown" style="padding-right: 43px;padding-top: 0.8em;padding-left:3em;padding-bottom:5px;float:right"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#">Select City</a>
                         <div class="dropdown-menu"><a class="dropdown-item" href="#">Mumbai</a><a class="dropdown-item" href="#">Delhi</a><a class="dropdown-item" href="#">Chandigarh</a></div>
                     </div> </li>
-                    </div><a href="Account.html" style="padding-right: 5px;">Username</a><a class="btn btn-light action-button" role="button" href="Account.html" style="width: 50px;"><i class="fa fa-user"></i></a></div>
+                    </div><a href="Account.html" style="padding-right: 5px;"><?php echo $uname; ?></a><a class="btn btn-light action-button" role="button" href="Account.html" style="width: 50px;"><i class="fa fa-user"></i></a></div>
                 </ul>       
     </nav>
     <div id="promo">
@@ -71,7 +81,7 @@ $email=$_POST["email"];
                     </tr>
                     <tr>
                         <td><strong>Password:</strong></td>
-                        <td><i class="icon ion-android-more-horizontal"></i><i class="icon ion-android-more-horizontal"></i><i class="icon ion-android-more-horizontal"></i><?php // echo $pass; ?></i></td>
+                        <td><?php echo $mess; ?></td>
                     </tr>
                 </tbody>
             </table>

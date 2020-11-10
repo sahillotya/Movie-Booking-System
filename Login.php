@@ -1,13 +1,14 @@
 <?php
 $message="";
 //var_dump("out IF ");
-$uname = "uname@ves.ac.in";
-$pass = "neeraj1!";
+$uname = "userName";
+$pass = "password1!";
+
 if(isset($_POST['submit'])) {
     // Enter the code you want to execute after the form has been submitted
     // Display Success or Failure message (if any)
     if($_POST["username"]==$uname && $_POST["password"]==$pass) {
-        $message = "<span style='color: #FEFEFE;'>You are successfully authenticated!</span>";
+        $message = "<span style='color:#4CAF50;'>You are successfully authenticated!</span>";
         
     } else {
         $message = "<span style='color: red;'>Invalid Username or Password!</span>";
