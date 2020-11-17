@@ -1,21 +1,29 @@
 <?php
-$message="";
-//var_dump("out IF ");
-$uname = "userName";
-$pass = "password1!";
-
-if(isset($_POST['submit'])) {
-    // Enter the code you want to execute after the form has been submitted
-    // Display Success or Failure message (if any)
-    if($_POST["username"]==$uname && $_POST["password"]==$pass) {
-        $message = "<span style='color:#4CAF50;'>You are successfully authenticated!</span>";
+		require('dataBase.php');
+		if (isset($_POST['submit'])){
+		$user=$_POST['username'];
+		$pass=$_POST['password'];
+        $pass=hash('sha256',$pass);
+        $pass=substr($pass,0,20);
         
-    } else {
-        $message = "<span style='color: red;'>Invalid Username or Password!</span>";
-        
-    }
-  }
+		$query = "SELECT * FROM `user` WHERE username='$user' and pass='$pass'";
+		$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+        $count = mysqli_num_rows($result);
+        $row = $result -> fetch_array(MYSQLI_NUM);
+        //printf ("%s (%s), %s,%s, [%s]\n", $row[0], $row[1],$row[2],$row[3],$row[4]);
+        //echo $pass;
+		if ($count == 1){
+		//Pass
+			echo("<script type='text/javascript'>alert('LOGGED IN SUCCESSFULLY')</script>");
+		}
+		else{
+		//Failed
+			echo("<script type='text/javascript'>alert('USERNAME OR PASSWORD IS INCORRECT')</script>");
+		}
+	}
 ?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -36,7 +44,7 @@ if(isset($_POST['submit'])) {
 <body>
     
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(220,220,220);position: sticky;z-index: 100;">
-        <img src="https://img.icons8.com/nolan/64/starred-ticket.png"/>&nbsp;&nbsp;<a class="navbar-brand" href="index.html" style="background: rgba(255,255,255,0);text-align: left;color:#3659FF;"><h3>Movie Booking Seva</h3></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <img src="https://img.icons8.com/nolan/64/starred-ticket.png"/>&nbsp;&nbsp;<a class="navbar-brand" href="index.php" style="background: rgba(255,255,255,0);text-align: left;color:#3659FF;"><h3>Movie Booking Seva</h3></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
@@ -65,15 +73,12 @@ if(isset($_POST['submit'])) {
                 <h6 id="passcheck" style="color: red;"> 
                     **Please Fill the password 
                 </h6>
-                <?php
-                    echo $message;
-                    $message="";
-                ?>
+                
                 <button class="btn btn-primary btn-block" type="submit" id="submit" name="submit">Log In</button>
                 <a class="forgot" href="signup.html" style="color: rgb(65,129,193);">Don't have an account? Sign-up</a></form>
             <!-- <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email"></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-            <div class="form-group"><a class="btn btn-primary btn-block" role="button" href="index.html">Log In</a></div><a class="forgot" href="signup.html" style="color: rgb(65,129,193);">Don't have an account? Sign-up</a></form> -->
+            <div class="form-group"><a class="btn btn-primary btn-block" role="button" href="index.php">Log In</a></div><a class="forgot" href="signup.html" style="color: rgb(65,129,193);">Don't have an account? Sign-up</a></form> -->
     </div>
     <div></div>
     

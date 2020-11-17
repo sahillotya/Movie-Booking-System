@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 
@@ -17,7 +19,7 @@
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md navigation-clean-search" style="background: rgb(220,220,220);position: sticky;z-index: 100;">
-        <img src="https://img.icons8.com/nolan/64/starred-ticket.png"/>&nbsp;&nbsp;<a class="navbar-brand" href="index.html" style="background: rgba(255,255,255,0);text-align: left;color:#3659FF;"><h3>Movie Booking Seva</h3></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <img src="https://img.icons8.com/nolan/64/starred-ticket.png"/>&nbsp;&nbsp;<a class="navbar-brand" href="index.php" style="background: rgba(255,255,255,0);text-align: left;color:#3659FF;"><h3>Movie Booking Seva</h3></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div
                 class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
@@ -42,7 +44,9 @@
                 <input class="form-control" type="text" placeholder="Username" name="username" id="username">
                 <h6 id="usercheck" style="color: red;" > 
                     **Username is missing 
-              </h6> 
+              </h6>
+              <!-- Response -->
+            <div id="uname_response" ></div> 
 
               
                 <input class="form-control" type="password" placeholder="Password" name="password" id="password"> <span id="pass"></span> 
@@ -63,7 +67,7 @@
                 </h6>
                 
                 <input class="form-control" type="email" placeholder="email-id@gmail.com" name="email" id="email">
-                <button class="btn btn-primary btn-block" type="submit" id="submitbtn" name="submitbtn">Sign up</button>
+<button class="btn btn-primary btn-block" type="submit" id="submitbtn" name="submitbtn">Sign up</button>
                 <a class="forgot" href="Login.php" style="color: rgb(65,129,193);">Already have an account? Login</a>
         <!-- <form id="form" class="form" method="post" style="width: 463px;">
             <h2 class="sr-only">Login Form</h2>
@@ -75,13 +79,44 @@
             <input class="form-control" type="date" placeholder="DOB" required="" style="color: #85929E ;">
             <div class="form-group">
                 <button class="btn btn-primary btn-block">Signup</button>
-                <a class="btn btn-primary btn-block" role="button" href="index.html" id="submit">Sign Up</a>
+                <a class="btn btn-primary btn-block" role="button" href="index.php" id="submit">Sign Up</a>
             </div>
             <a class="forgot" href="Login.html" style="color: rgb(65,129,193);">Already have an account? Login</a></form> -->
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="assets/js/validate.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script>$(document).ready(function(){
+
+        $("#username").keyup(function(){
+                console.log("yeah!!!!!");
+          var username = $(this).val().trim();
+     
+          if(username != ''){
+     
+             $.ajax({
+                url: 'available.php',
+                type: 'post',
+                data: {username:username},
+                success: function(response){
+     
+                   // Show response
+                   $("#uname_response").html(response);
+                    if(response.includes("not")){
+                        document.getElementById("submitbtn").disabled = true;
+                    }else{
+                        document.getElementById("submitbtn").disabled = false;
+                    }
+                }
+             });
+          }else{
+             $("#uname_response").html("");
+          }
+     
+       });
+     
+     });
+    </script>
 </body>
 
 </html>

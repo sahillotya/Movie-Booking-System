@@ -1,15 +1,19 @@
-<?php
-require('dataBase.php');
-$fname = $_POST["fname"];
-$lname = $_POST["lname"];
-$uname = $_POST["username"];
-$pass = $_POST["password"];
-$age = $_POST["age"];
-$email = $_POST["email"];
-$pass=hash('sha256',$pass);
-$sqlreg = "INSERT INTO user(`fname`, `lname`, `username`, `pass`, `age`, `email_id`) VALUES ('$fname','$lname','$uname','$pass','$age','$email')";
-$current_id = mysqli_query($conn, $sqlreg) or die("<b>Error:</b> Problem while submitting<br/>" . mysqli_error($conn));
 
+ 
+<?php
+// require('dataBase.php');
+// $fname = $_POST["fname"];
+// $lname = $_POST["lname"];
+// $uname = $_POST["username"];
+// $pass = $_POST["password"];
+// $age = $_POST["age"];
+// $email = $_POST["email"];
+// $pass=hash('sha256',$pass);
+// $fname="rahul";
+// $sqlreg = "INSERT INTO user(`fname`, `lname`, `username`, `pass`, `age`, `email_id`) VALUES ('$fname','$lname','$uname','$pass','$age','$email')";
+// $current_id = mysqli_query($conn, $sqlreg) or die("<b>Error:</b> Problem while submitting<br/>" . mysqli_error($conn));
+$fname="rahul";
+$lname="koli";
 $mess="";
 $length=strlen($pass);
 for($i=0;$i<$length;$i++){
@@ -61,10 +65,10 @@ for($i=0;$i<$length;$i++){
     </div>
     <div class="container">
         <div class="table-responsive table-borderless">
-            <table class="table table-striped table-bordered">
+            <table id="sample_data" class="table table-striped table-bordered">
                 <tbody>
                     <tr>
-                        <td><strong>Name: </strong></td>
+                        <td id="f_name"><strong>Name: </strong></td>
                         <td><?php echo $fname." ".$lname ?></td>
                     </tr>
                     <tr>
@@ -89,6 +93,69 @@ for($i=0;$i<$length;$i++){
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function(){
+	var dataTable = $('#sample_data').DataTable({
+		"processing": true,
+		"serverSide": true,
+		"order":[],
+		"ajax":{
+			url:"fetch2.php",
+			type:"POST",
+		},
+		createdRow:function(row, data, rowIndex)
+		{
+			$.each($('td', row), function(colIndex){
+				if(colIndex == 1)
+				{
+					$(this).attr('data-name', 'fname');
+					$(this).attr('class', 'fname');
+					$(this).attr('data-type', 'text');
+					$(this).attr('data-pk', data[0]);
+				}
+				// if(colIndex == 2)
+				// {
+				// 	$(this).attr('data-name', 'l_name');
+				// 	$(this).attr('class', 'l_name');
+				// 	$(this).attr('data-type', 'text');
+				// 	$(this).attr('data-pk', data[0]);
+				// }
+				
+			});
+		}
+	});
+
+	$('#sample_data').editable({
+		container:'body',
+		selector:'td.fname',
+		url:'update.php',
+		title:'First Name',
+		type:'POST',
+		validate:function(value){
+			if($.trim(value) == '')
+			{
+				return 'This field is required';
+			}
+		}
+	});
+
+	// $('#sample_data').editable({
+	// 	container:'body',
+	// 	selector:'td.fname',
+	// 	url:'update.php',
+	// 	title:'Last Name',
+	// 	type:'POST',
+	// 	validate:function(value){
+	// 		if($.trim(value) == '')
+	// 		{
+	// 			return 'This field is required';
+	// 		}
+	// 	}
+	// });
+});	
+</script>
 </body>
 
 </html>
